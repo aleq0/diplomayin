@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
+
 class HomeController extends Controller
 {
     /**
@@ -21,6 +23,15 @@ class HomeController extends Controller
      */
     public function index()
     {
+
+        $lastTemp = DB::table('temperatures')->latest('id')->first();
+
+        $lastLight = DB::table('light')->latest('id')->first();
+
+        $lastAir = DB::table('air_humidity')->latest('id')->first();
+
+
+
         return view('dashboard');
     }
 }

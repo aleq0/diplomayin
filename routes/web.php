@@ -38,6 +38,24 @@ Route::group(['middleware' => 'auth'], function () {
             Route::get('/getTableData', 'TemperatureController@getTableData');
         });
 
+        Route::group(['prefix' => 'humidity'], function () {
+
+            Route::get('/air', 'HumidityController@airIndex')->name('airHumidity.index');
+            Route::get('/air/seed', 'HumidityController@airSeed');
+            Route::get('/air//getTableData', 'HumidityController@getAirTableData');
+
+            Route::get('/soil', 'HumidityController@soilIndex')->name('soilHumidity.index');
+            Route::get('/soil/seed', 'HumidityController@soilSeed');
+            Route::get('/soil//getTableData', 'HumidityController@getSoilTableData');
+        });
+
+        Route::group(['prefix' => 'light'], function () {
+            Route::get('/', 'LightController@index')->name('light.index');
+            Route::get('/seed', 'LightController@seed');
+            Route::get('/getTable', 'LightController@getTable');
+        });
+
+
 });
 
 Route::group(['middleware' => 'auth'], function () {

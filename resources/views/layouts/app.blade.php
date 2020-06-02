@@ -13,12 +13,17 @@
         <link rel="icon" type="image/png" href="{{ asset('black') }}/img/favicon.png">
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
-        <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
         <!-- Icons -->
         <link href="{{ asset('black') }}/css/nucleo-icons.css" rel="stylesheet" />
         <!-- CSS -->
+        <link href="{{ asset('black/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />
+        <link href="{{ asset('black/plugins/bootstrap/css/datepicker.css') }}" rel="stylesheet" />
         <link href="{{ asset('black') }}/css/black-dashboard.css?v=1.0.0" rel="stylesheet" />
         <link href="{{ asset('black') }}/css/theme.css" rel="stylesheet" />
+        <link href="{{ asset('black/plugins/fontawesome/css/all.css') }}" rel="stylesheet" />
+        @auth @else
+            <link href="{{ asset('black/css/login.css') }}" rel="stylesheet" />
+        @endauth
     </head>
     <body class="{{ $class ?? '' }}">
         @auth()
@@ -39,16 +44,7 @@
             </form>
         @else
             @include('layouts.navbars.navbar')
-            <div class="wrapper wrapper-full-page">
-                <div class="full-page {{ $contentClass ?? '' }}">
-                    <div class="content">
-                        <div class="container">
-                            @yield('content')
-                        </div>
-                    </div>
-                    @include('layouts.footer')
-                </div>
-            </div>
+                @yield('content')
         @endauth
 
         <script src="{{ asset('black') }}/js/core/jquery.min.js"></script>
@@ -62,6 +58,7 @@
         {{-- <script src="{{ asset('black') }}/js/plugins/chartjs.min.js"></script> --}}
         <!--  Notifications Plugin    -->
         <script src="{{ asset('black') }}/js/plugins/bootstrap-notify.js"></script>
+        <script src="{{ asset('black/plugins/bootstrap/js/bootstrap-datepicker.js') }}"></script>
 
         <script src="{{ asset('black') }}/js/black-dashboard.min.js?v=1.0.0"></script>
         <script src="{{ asset('black') }}/js/libs/send_ajax.js"></script>

@@ -28,4 +28,9 @@ class BaseModel extends Model
     {
         return Carbon::createFromFormat('G:i:s', $val)->format('G:i');
     }
+
+    public function scopeLast($query)
+    {
+        return $query->select(DB::raw("MIN(value) AS min"), DB::raw("MAX(value) AS max"));
+    }
 }

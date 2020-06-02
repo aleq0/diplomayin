@@ -5037,19 +5037,19 @@ input[type="button"].btn-block {
 .page-link {
   position: relative;
   display: block;
-  padding: 0 0.6875rem;
-  margin-left: -0.0625rem;
+  padding: .5rem .75rem;
+  margin-left: -1px;
   line-height: 1.25;
   color: #ffffff;
-  background-color: transparent;
-  border: 0.0625rem solid #e3e3e3;
+  background-color: #fff0;
+  border: 1px solid rgba(222, 226, 230, 0.24);
 }
 
 .page-link:hover {
   z-index: 2;
-  color: #6c757d;
+  color: #ffffff;
   text-decoration: none;
-  background-color: #e3e3e3;
+  background-color: rgba(0, 0, 0, 0.55);
   border-color: #e3e3e3;
 }
 
@@ -5062,7 +5062,7 @@ input[type="button"].btn-block {
 .page-link:not(:disabled):not(.disabled) {
   cursor: pointer;
 }
-
+/*
 .page-item:first-child .page-link {
   margin-left: 0;
   border-top-left-radius: 0.25rem;
@@ -5087,9 +5087,9 @@ input[type="button"].btn-block {
   cursor: auto;
   background-color: transparent;
   border-color: #e3e3e3;
-}
+}*/
 
-.pagination-lg .page-link {
+/*.pagination-lg .page-link {
   padding: 0.75rem 1.5rem;
   font-size: 0.99925rem;
   line-height: 1.625rem;
@@ -5119,7 +5119,7 @@ input[type="button"].btn-block {
 .pagination-sm .page-item:last-child .page-link {
   border-top-right-radius: 0.2857rem;
   border-bottom-right-radius: 0.2857rem;
-}
+}*/
 
 .badge {
   display: inline-block;
@@ -10191,6 +10191,22 @@ a.text-darker:focus {
 
 .text-white-50 {
   color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.light-color {
+  color: #e5e806 !important;
+}
+
+.airHumidity-color {
+  color: #2380f7 !important;
+}
+
+.soilHumidity-color {
+  color: #00d6b4 !important;
+}
+
+.temperature-color {
+  color: #d346b1 !important;
 }
 
 .text-hide {
@@ -15830,14 +15846,14 @@ a[data-toggle="collapse"][aria-expanded="true"] .caret,
   color: rgba(255, 255, 255, 0.8);
 }
 
-.bd-docs .bd-example .datepicker thead th,
+/*.bd-docs .bd-example .datepicker thead th,
 .bd-docs .bd-example .datepicker table thead th,
 .bd-docs .bd-example .datepicker .tim-icons,
 .bd-docs table .datepicker thead th,
 .bd-docs table .datepicker table thead th,
 .bd-docs table .datepicker .tim-icons {
   color: #1d8cf8;
-}
+}*/
 
 .bd-docs .bd-example .picker-switch .tim-icons,
 .bd-docs table .picker-switch .tim-icons {
@@ -17598,7 +17614,7 @@ Copyright (c) 2015 Daniel Eden
 }
 
 .map {
-  height: 500px;
+  height: 422px;
 }
 
 .card-user {
@@ -17894,5 +17910,195 @@ Copyright (c) 2015 Daniel Eden
 .sidebar .sidebar-wrapper>.nav [data-toggle="collapse"]~div>ul>li>a i, .sidebar .sidebar-wrapper .user .info [data-toggle="collapse"]~div>ul>li>a i, .off-canvas-sidebar .sidebar-wrapper>.nav [data-toggle="collapse"]~div>ul>li>a i, .off-canvas-sidebar .sidebar-wrapper .user .info [data-toggle="collapse"]~div>ul>li>a i {
   line-height: 32px;
 }
+
+/*arseni stylery*/
+
+/* form starting stylings ------------------------------- */
+.group 			  {
+  position:relative;
+  margin-bottom:45px;
+}
+input 				{
+  font-size:14px;
+  padding:10px 10px 10px 5px;
+  color: white;
+  display:block;
+  width:300px;
+  border: 1px solid #3d3f51;
+  background: no-repeat;
+  height: 35px;
+}
+input:focus 		{ outline:none; }
+
+/* LABEL ======================================= */
+label 				 {
+  color:#999;
+  font-size:18px;
+  font-weight:normal;
+  position:absolute;
+  pointer-events:none;
+  left:5px;
+  top:10px;
+  transition:0.2s ease all;
+  -moz-transition:0.2s ease all;
+  -webkit-transition:0.2s ease all;
+}
+
+/* active state */
+input:focus ~ label, input:valid ~ label 		{
+  top:-20px;
+  font-size:14px;
+  color:#5264AE;
+}
+
+/* BOTTOM BARS ================================= */
+.bar 	{ position:relative; display:block; width:300px; }
+.bar:before, .bar:after 	{
+  content:'';
+  height:2px;
+  width:0;
+  bottom:1px;
+  position:absolute;
+  background:#5264AE;
+  transition:0.2s ease all;
+  -moz-transition:0.2s ease all;
+  -webkit-transition:0.2s ease all;
+}
+.bar:before {
+  left:50%;
+}
+.bar:after {
+  right:50%;
+}
+
+/* active state */
+input:focus ~ .bar:before, input:focus ~ .bar:after {
+  width:50%;
+}
+
+/* HIGHLIGHTER ================================== */
+.highlight {
+  position:absolute;
+  height:60%;
+  width:100px;
+  top:25%;
+  left:0;
+  pointer-events:none;
+  opacity:0.5;
+}
+
+/* active state */
+input:focus ~ .highlight {
+  -webkit-animation:inputHighlighter 0.3s ease;
+  -moz-animation:inputHighlighter 0.3s ease;
+  animation:inputHighlighter 0.3s ease;
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+  from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
+}
+@-moz-keyframes inputHighlighter {
+  from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
+}
+@keyframes inputHighlighter {
+  from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
+}
+.drop_element{
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+.management_block{
+  padding: 15px;
+}
+.management_block > ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.management_inner{
+  display: flex;
+  align-items: center;
+}
+.management_inner > .form_check{
+  padding-right: 60px;
+}
+.management_inner > .btn_block{
+  margin-left: auto;
+  display: flex;
+}
+.management_inner > i:before{
+  font-size: 200%;
+}
+.management_block ul li {
+  padding: 16px 0 16px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+.drops_list .opened .drop_element{
+  display: flex;
+  align-items: center;
+  padding-top: 15px;
+  padding-bottom: 3px;
+  height: 70px;
+  opacity: 1;
+  overflow: auto;
+}
+.drop_title{
+  padding-right: 40px;
+}
+.drop_btn{
+  margin-left: auto;
+}
+.management_inner .icon-pencil::before{
+  color: #9A9A9A;
+  font-size: 20px;
+}
+.btn_inner{
+  border: none;
+  background: no-repeat;
+  color: white;
+  padding: 0;
+  margin: 0;
+}
+.management_inner .fa:before{
+  font-size: 20px;
+}
+.drop_element .fa-save:before {
+  font-size: 20px;
+  color: #7a7a80;
+}
+.card_info{
+  display: flex;
+}
+.card_info > .text{
+  color: white;
+  padding-left: 15px;
+}
+
+/*history css*/
+.history_block{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.input_group > .fa{
+  position: absolute;
+  right: 11px;
+}
+.input_group{
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+/*history css*/
+
+
+/*arseni stylery*/
+
 
 /*# sourceMappingURL=dashboard-free.css.map */

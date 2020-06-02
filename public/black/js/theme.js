@@ -1,5 +1,13 @@
 type = ['primary', 'info', 'success', 'warning', 'danger'];
 
+let labels = [
+  '00:00', '01:00', '02:00', '03:00', '04:00', '05:00', '06:00', '07:00', '08:00', '09:00', "10:00", '11:00',
+  '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00',
+
+];
+
+var soilHumidityChart;
+
 demo = {
   initPickColor: function() {
     $('.pick-class-label').click(function() {
@@ -156,54 +164,6 @@ demo = {
       }
     };
 
-    gradientChartOptionsConfigurationWithTooltipPurple = {
-      maintainAspectRatio: false,
-      legend: {
-        display: false
-      },
-
-      tooltips: {
-        backgroundColor: '#f5f5f5',
-        titleFontColor: '#333',
-        bodyFontColor: '#666',
-        bodySpacing: 4,
-        xPadding: 12,
-        mode: "nearest",
-        intersect: 0,
-        position: "nearest"
-      },
-      responsive: true,
-      scales: {
-        yAxes: [{
-          barPercentage: 1.6,
-          gridLines: {
-            drawBorder: false,
-            color: 'rgba(29,140,248,0.0)',
-            zeroLineColor: "transparent",
-          },
-          ticks: {
-            suggestedMin: 60,
-            suggestedMax: 125,
-            padding: 20,
-            fontColor: "#9a9a9a"
-          }
-        }],
-
-        xAxes: [{
-          barPercentage: 1.6,
-          gridLines: {
-            drawBorder: false,
-            color: 'rgba(225,78,202,0.1)',
-            zeroLineColor: "transparent",
-          },
-          ticks: {
-            padding: 20,
-            fontColor: "#9a9a9a"
-          }
-        }]
-      }
-    };
-
     gradientChartOptionsConfigurationWithTooltipOrange = {
       maintainAspectRatio: false,
       legend: {
@@ -252,7 +212,103 @@ demo = {
       }
     };
 
-    gradientChartOptionsConfigurationWithTooltipGreen = {
+    lightChartOptions = {
+      maintainAspectRatio: false,
+      legend: {
+        display: false
+      },
+
+      tooltips: {
+        backgroundColor: '#f5f5f5',
+        titleFontColor: '#333',
+        bodyFontColor: '#666',
+        bodySpacing: 4,
+        xPadding: 5,
+        mode: "nearest",
+        intersect: 0,
+        position: "nearest"
+      },
+      responsive: true,
+      scales: {
+        yAxes: [{
+          barPercentage: 1.6,
+          gridLines: {
+            drawBorder: false,
+            color: 'rgba(29,140,248,0.0)',
+            zeroLineColor: "transparent",
+          },
+          ticks: {
+            suggestedMin: 60,
+            suggestedMax: 125,
+            padding: 20,
+            fontColor: "#9a9a9a"
+          }
+        }],
+
+        xAxes: [{
+          barPercentage: 1.6,
+          gridLines: {
+            drawBorder: false,
+            color: 'rgba(220,225,8,0.07)',
+            zeroLineColor: "transparent",
+          },
+          ticks: {
+            padding: 20,
+            fontColor: "#9a9a9a"
+          }
+        }]
+      }
+    };
+
+    tempChartOptions = {
+      maintainAspectRatio: false,
+      legend: {
+        display: false
+      },
+
+      tooltips: {
+        backgroundColor: '#f5f5f5',
+        titleFontColor: '#333',
+        bodyFontColor: '#666',
+        bodySpacing: 4,
+        xPadding: 12,
+        mode: "nearest",
+        intersect: 0,
+        position: "nearest"
+      },
+      responsive: true,
+      scales: {
+        yAxes: [{
+          barPercentage: 1.6,
+          gridLines: {
+            drawBorder: false,
+            color: 'rgba(29,140,248,0.0)',
+            zeroLineColor: "transparent",
+          },
+          ticks: {
+            suggestedMin: 60,
+            suggestedMax: 125,
+            padding: 20,
+            fontColor: "#9a9a9a"
+          }
+        }],
+
+        xAxes: [{
+          barPercentage: 1.6,
+          gridLines: {
+            drawBorder: false,
+            color: 'rgba(225,111,201,0.07)',
+            zeroLineColor: "transparent",
+          },
+          ticks: {
+            padding: 20,
+            fontColor: "#9a9a9a"
+          }
+        }]
+      }
+    };
+
+    soilHumidityChartOptions = {
       maintainAspectRatio: false,
       legend: {
         display: false
@@ -301,7 +357,7 @@ demo = {
     };
 
 
-    gradientBarChartConfiguration = {
+    airHumidityChartOptions = {
       maintainAspectRatio: false,
       legend: {
         display: false
@@ -357,31 +413,31 @@ demo = {
     gradientStroke.addColorStop(0.2, 'rgba(72,72,176,0.0)');
     gradientStroke.addColorStop(0, 'rgba(119,52,169,0)'); //purple colors
 
-    var data = {
-      labels: ['JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC', '180'],
+    var lightData = {
+      labels: labels,
       datasets: [{
         label: "Data",
         fill: true,
         backgroundColor: gradientStroke,
-        borderColor: '#d048b6',
+        borderColor: '#e5e806',
         borderWidth: 2,
         borderDash: [],
         borderDashOffset: 0.0,
-        pointBackgroundColor: '#d048b6',
+        pointBackgroundColor: '#e5e806',
         pointBorderColor: 'rgba(255,255,255,0)',
-        pointHoverBackgroundColor: '#d048b6',
+        pointHoverBackgroundColor: '#e5e806',
         pointBorderWidth: 20,
         pointHoverRadius: 4,
         pointHoverBorderWidth: 15,
-        pointRadius: 4,
+        pointRadius: 3,
         data: [80, 100, 70, 80, 120, 80, 180],
       }]
     };
 
-    var myChart = new Chart(ctx, {
+    var lightChart = new Chart(ctx, {
       type: 'line',
-      data: data,
-      options: gradientChartOptionsConfigurationWithTooltipPurple
+      data: lightData,
+      options: lightChartOptions
     });
 
 
@@ -393,8 +449,8 @@ demo = {
     gradientStroke.addColorStop(0.4, 'rgba(66,134,121,0.0)'); //green colors
     gradientStroke.addColorStop(0, 'rgba(66,134,121,0)'); //green colors
 
-    var data = {
-      labels: ['JUL', 'AUG', 'SEP', 'OCT', 'NOV'],
+    var soilData = {
+      labels: labels,
       datasets: [{
         label: "My First dataset",
         fill: true,
@@ -409,23 +465,47 @@ demo = {
         pointBorderWidth: 20,
         pointHoverRadius: 4,
         pointHoverBorderWidth: 15,
-        pointRadius: 4,
+        pointRadius: 3,
         data: [90, 27, 60, 12, 80],
       }]
     };
 
-    var myChart = new Chart(ctxGreen, {
+    soilHumidityChart = new Chart(ctxGreen, {
       type: 'line',
-      data: data,
-      options: gradientChartOptionsConfigurationWithTooltipGreen
+      data: soilData,
+      options: soilHumidityChartOptions
 
     });
 
 
-
-    var chart_labels = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
-    var chart_data = [100, 70, 90, 70, 85, 60, 75, 60, 90, 80, 110, 100];
-
+    /*temperatureCard*/
+    var chart_labels = labels;
+    var chart_data = [
+      "24",
+      "29",
+      "14",
+      "27",
+      "25",
+      "21",
+      "29",
+      "16",
+      "26",
+      "28",
+      "23",
+      "30",
+      "24",
+      "25",
+      "15",
+      "23",
+      "11",
+      "17",
+      "16",
+      "14",
+      "11",
+      "22",
+      "19",
+      "15"
+    ];
 
     var ctx = document.getElementById("chartBig1").getContext('2d');
 
@@ -434,12 +514,13 @@ demo = {
     gradientStroke.addColorStop(1, 'rgba(72,72,176,0.1)');
     gradientStroke.addColorStop(0.4, 'rgba(72,72,176,0.0)');
     gradientStroke.addColorStop(0, 'rgba(119,52,169,0)'); //purple colors
+
     var config = {
       type: 'line',
       data: {
         labels: chart_labels,
         datasets: [{
-          label: "My First dataset",
+          label: "Արժեք",
           fill: true,
           backgroundColor: gradientStroke,
           borderColor: '#d346b1',
@@ -452,35 +533,15 @@ demo = {
           pointBorderWidth: 20,
           pointHoverRadius: 4,
           pointHoverBorderWidth: 15,
-          pointRadius: 4,
+          pointRadius: 3,
           data: chart_data,
         }]
       },
-      options: gradientChartOptionsConfigurationWithTooltipPurple
+      options: tempChartOptions
     };
-    var myChartData = new Chart(ctx, config);
-    $("#0").click(function() {
-      var data = myChartData.config.data;
-      data.datasets[0].data = chart_data;
-      data.labels = chart_labels;
-      myChartData.update();
-    });
-    $("#1").click(function() {
-      var chart_data = [80, 120, 105, 110, 95, 105, 90, 100, 80, 95, 70, 120];
-      var data = myChartData.config.data;
-      data.datasets[0].data = chart_data;
-      data.labels = chart_labels;
-      myChartData.update();
-    });
 
-    $("#2").click(function() {
-      var chart_data = [60, 80, 65, 130, 80, 105, 90, 130, 70, 115, 60, 130];
-      var data = myChartData.config.data;
-      data.datasets[0].data = chart_data;
-      data.labels = chart_labels;
-      myChartData.update();
-    });
-
+    var tempChart = new Chart(ctx, config);
+    /*temperatureCard*/
 
     var ctx = document.getElementById("CountryChart").getContext("2d");
 
@@ -498,7 +559,7 @@ demo = {
         display: false
       },
       data: {
-        labels: ['USA', 'GER', 'AUS', 'UK', 'RO', 'BR'],
+        labels: labels,
         datasets: [{
           label: "Countries",
           fill: true,
@@ -508,10 +569,10 @@ demo = {
           borderWidth: 2,
           borderDash: [],
           borderDashOffset: 0.0,
-          data: [53, 20, 10, 80, 100, 45],
+          data: [53, 20, 10, 80, 100, 45, 53, 20, 10, 80, 100, 45],
         }]
       },
-      options: gradientBarChartConfiguration
+      options: airHumidityChartOptions
     });
 
   },
@@ -533,9 +594,65 @@ demo = {
     });
   },
 
-  initChart : function (data) {
+  initChart : function (data, color) {
 
-    gradientChartOptionsConfigurationWithTooltipPurple = {
+    soilHumidityChartOptions = {
+      maintainAspectRatio: false,
+      legend: {
+        display: false
+      },
+
+      tooltips: {
+        backgroundColor: '#f5f5f5',
+        titleFontColor: '#333',
+        bodyFontColor: '#666',
+        bodySpacing: 4,
+        xPadding: 12,
+        mode: "nearest",
+        intersect: 0,
+        position: "nearest"
+      },
+      responsive: true,
+      scales: {
+        yAxes: [{
+          barPercentage: 1.6,
+          gridLines: {
+            drawBorder: false,
+            color: 'rgba(29,140,248,0.0)',
+            zeroLineColor: "transparent",
+          },
+          ticks: {
+            suggestedMin: 50,
+            suggestedMax: 125,
+            padding: 20,
+            fontColor: "#9e9e9e"
+          }
+        }],
+
+        xAxes: [{
+          barPercentage: 1.6,
+          gridLines: {
+            drawBorder: false,
+            color: 'rgba(0,242,195,0.1)',
+            zeroLineColor: "transparent",
+          },
+          ticks: {
+            padding: 20,
+            fontColor: "#9e9e9e"
+          }
+        }]
+      }
+    };
+
+    var ctx = document.getElementById("chart").getContext("2d");
+
+    var gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
+
+    gradientStroke.addColorStop(1, 'rgba(66,134,121,0.15)');
+    gradientStroke.addColorStop(0.4, 'rgba(66,134,121,0.0)'); //green colors
+    gradientStroke.addColorStop(0, 'rgba(66,134,121,0)'); //green colors
+
+    lightChartOptions = {
       maintainAspectRatio: false,
       legend: {
         display: false
@@ -583,25 +700,19 @@ demo = {
       }
     };
 
-    let labels = [
-      '00:00', '01:00', '02:00', '03:00', '04:00', '05:00', '06:00', '07:00', '08:00', '09:00', "10:00", '11:00',
-      '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00',
-
-    ];
-
     var data = {
       labels: labels,
       datasets: [{
         label: "Արժեք",
         fill: true,
         backgroundColor: gradientStroke,
-        borderColor: '#2279ff',
+        borderColor: color,
         borderWidth: 2,
         borderDash: [],
         borderDashOffset: 0.0,
-        pointBackgroundColor: '#2279ff',
+        pointBackgroundColor: color,
         pointBorderColor: 'rgba(255,255,255,0)',
-        pointHoverBackgroundColor: '#1d8cf8',
+        pointHoverBackgroundColor: color,
         pointBorderWidth: 20,
         pointHoverRadius: 4,
         pointHoverBorderWidth: 15,
@@ -609,26 +720,50 @@ demo = {
         data: data,
       }]
     };
-
-    var ctx = document.getElementById("chart").getContext("2d");
-
-    var gradientStroke = ctx.createLinearGradient(15, 230, 0, 50);
-
-    gradientStroke.addColorStop(0, 'rgba(6, 25, 119,1)');
-
     var myChart = new Chart(ctx, {
       type: 'line',
       data: data,
-      options: gradientChartOptionsConfigurationWithTooltipPurple
+      options: lightChartOptions
+    });
+  },
+
+  initGoogleMaps: function() {
+    var myLatlng = new google.maps.LatLng(40.748817, -73.985428);
+    var mapOptions = {
+      zoom: 13,
+      center: myLatlng,
+      scrollwheel: false, //we disable de scroll over the map, it is a really annoing when you scroll through page
+    };
+
+    var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+    var marker = new google.maps.Marker({
+      position: myLatlng,
+      title: "Hello World!"
+    });
+
+    // To add the marker to the map, call setMap();
+    marker.setMap(map);
+  },
+
+  getTable: function (url) {
+    $.ajax({
+      url: url,
+      type: 'GET',
+      dataType:'text',
+      headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+      async: false,
+      success: function (data) {
+        $('.table-card').empty().append(data)
+      }
     });
   }
+
 };
 
 $(document).on('click', '.page-item a:not(.active)', function (e) {
 
   e.preventDefault();
-
-console.log('barev');
 
   $(this).parents('ul').find('.active').removeClass('active');
 
@@ -636,15 +771,75 @@ console.log('barev');
 
   let url = $(this).attr('href');
 
-  $.ajax({
-    url: url,
-    type: 'GET',
-    dataType:'text',
-    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-    async: false,
-    success: function (data) {
-      $('tbody').empty().append(data)
-    }
+  demo.getTable(url);
+});
 
-  });
+$(document).on('click', '.fstx', function(e){
+
+  e.stopPropagation();
+
+});
+
+$('.datepicker').datepicker({
+  icons: {
+    time: "fa fa-clock-o",
+    date: "fa fa-calendar",
+    up: "fa fa-arrow-up",
+    down: "fa fa-arrow-down"
+  }
+}).on('hide', function () {
+
+});
+
+var dropToggle = function(e) {
+  e.preventDefault();
+
+  if($(this).parents('li').hasClass('opened')) {
+
+    $(this).parents('li').removeClass('opened').find('.drop_element').slideUp(300);
+
+  } else {
+
+    $('.drops_list li').removeClass('opened');
+
+    $('.drop_element').slideUp(300);
+
+    $(this).parents('li').addClass('opened').find('.drop_element').stop(true,true).slideDown(300);
+  }
+};
+
+$(document).ready(function(){
+  $('.drop_button').click(dropToggle);
+});
+
+$(document).on('click', '#2', function () {
+
+  if ($(this).hasClass('disabled')) {
+    return;
+  }
+
+  $('#1').removeClass('disabled')
+
+  $(this).addClass('disabled');
+
+  var data = soilHumidityChart.config.data;
+  data.datasets[0].data = [5,10,15,15, 15];
+  soilHumidityChart.update();
+
+});
+
+$(document).on('click', '#1', function () {
+
+  if ($(this).hasClass('disabled')) {
+    return;
+  }
+
+  $('#2').removeClass('disabled')
+
+  $(this).addClass('disabled');
+
+  var data = soilHumidityChart.config.data;
+  data.datasets[0].data = [90, 27, 60, 12, 80];
+  soilHumidityChart.update();
+
 });

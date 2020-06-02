@@ -47,8 +47,8 @@
         <div class="col-lg-12">
             <div class="card card-chart">
                 <div class="card-header">
-                    <h5 class="card-category">Total Shipments</h5>
-                    <h3 class="card-title"><i class="tim-icons icon-bell-55 text-primary"></i> 763,215</h3>
+                    <h5 class="card-title"><i class="fa fa-thermometer-three-quarters temperature-color"></i> @lang('Today')</h5>
+
                 </div>
                 <div class="card-body">
                     <div class="chart-area">
@@ -59,39 +59,10 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-lg-4">
-            <div class="card card-chart">
-                <div class="card-header">
-                    <h5 class="card-category">Daily Sales</h5>
-                    <h3 class="card-title"><i class="tim-icons icon-delivery-fast text-info"></i> 3,500€</h3>
-                </div>
-                <div class="card-body">
-                    <div class="chart-area">
-                        <canvas id="CountryChart"></canvas>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4">
-            <div class="card card-chart">
-                <div class="card-header">
-                    <h5 class="card-category">Completed Tasks</h5>
-                    <h3 class="card-title"><i class="tim-icons icon-send text-success"></i> 12,100K</h3>
-                </div>
-                <div class="card-body">
-                    <div class="chart-area">
-                        <canvas id="chartLineGreen"></canvas>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-
         <div class="col-lg-6 col-md-12">
             <div class="card ">
                 <div class="card-header">
-                    <h4 class="card-title">Simple Table</h4>
+                    <h4 class="card-title">@lang('History')</h4>
                 </div>
                 <div class="card-body">
                     <div class="row">
@@ -105,23 +76,18 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($temps->items() as $item)
-                                        <tr>
-                                            <td>{{$item->date}}</td>
-                                            <td>{{$item->time}}</td>
-                                            <td>{{$item->value}}</td>
-                                        </tr>
-                                    @endforeach
+                                @foreach($data->items() as $item)
+                                    <tr>
+                                        <td>{{$item->date}}</td>
+                                        <td>{{$item->time}}</td>
+                                        <td>{{$item->value}}</td>
+                                    </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-12 col-md-5">
-                            <div class="dataTables_info" id="dtBasicExample_info" role="status" aria-live="polite">
-                                Showing 1 to 10 of 57 entries
-                            </div>
-                        </div>
                         {{--<div class="col-sm-12 col-md-7">
                             <div class="dataTables_paginate paging_simple_numbers" id="dtBasicExample_paginate">
                                 <ul class="pagination">
@@ -157,8 +123,8 @@
                                 </ul>
                             </div>
                         </div>--}}
-                        <div class="col-sm-12 col-md-7">
-                            {{$temps->links()}}
+                        <div class="col-sm-12 col-md-12 float-right">
+                            {{$data->links()}}
                         </div>
                     </div>
                 </div>
@@ -170,18 +136,16 @@
 @push('js')
     <script>
 
-        var data = {!! json_encode($todayTemps->toArray()) !!};
+      var data = {!! json_encode($todayData->toArray()) !!};
 
-        yValues = [];
+      yValues = [];
 
-        $.each(data, function (key, item) {
-            yValues.push(item.value);
-        });
+      $.each(data, function (key, item) {
+        yValues.push(item.value);
+      });
 
-        console.log(yValues);
-        
-        $(document).ready(function() {
-          demo.initChart(yValues);
-        });
+      $(document).ready(function() {
+        demo.initChart(yValues, '#E81429');
+      });
     </script>
 @endpush

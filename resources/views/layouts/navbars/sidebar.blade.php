@@ -11,7 +11,7 @@
                     <p>{{ __('Dashboard') }}</p>
                 </a>
             </li>
-            <li>
+            {{--<li>
                 <a data-toggle="collapse" href="#laravel-examples" aria-expanded="true">
                     <i class="fab fa-laravel" ></i>
                     <span class="nav-link-text" >{{ __('Laravel Examples') }}</span>
@@ -70,13 +70,32 @@
                     <i class="tim-icons icon-world"></i>
                     <p>{{ __('RTL Support') }}</p>
                 </a>
-            </li>
+            </li>--}}
             <li class=" {{ $pageSlug == 'temperature' ? 'active' : '' }}">
                 <a href="{{route('temperature.index')}}">
-                    <i class="tim-icons icon-spaceship"></i>
-                    <p>{{ __('Ջերմաստիճան') }}</p>
+                    <i class="fa fa-thermometer-quarter"></i>
+                    <p>{{ __('Temperature') }}</p>
                 </a>
             </li>
+            <li class=" {{ $pageSlug == 'airHumidity' ? 'active' : '' }}">
+                <a href="{{route('airHumidity.index')}}">
+                    <i class="fa fa-tint"></i>
+                    <p>{{ __('Air Humidity') }}</p>
+                </a>
+            </li>
+            <li class=" {{ $pageSlug == 'soilHumidity' ? 'active' : '' }}">
+                <a href="{{route('soilHumidity.index')}}">
+                    <i class="fa fa-faucet"></i>
+                    <p>{{ __('Soil Humidity') }}</p>
+                </a>
+            </li>
+            <li class=" {{ $pageSlug == 'light' ? 'active' : '' }}">
+                <a href="{{route('light.index')}}">
+                    <i class="fa fa-lightbulb"></i>
+                    <p>{{ __('Լույս') }}</p>
+                </a>
+            </li>
+
         </ul>
     </div>
 </div>

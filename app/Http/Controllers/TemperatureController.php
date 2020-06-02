@@ -4,29 +4,26 @@ namespace App\Http\Controllers;
 
 use App\Models\Temperature;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
 
 class TemperatureController extends BaseController
 {
-
-
     public function index()
     {
 
         $todayTemps = Temperature::today()->get();
 
-        $temps = Temperature::paginate($this->paginationCount);
+        $temps = Temperature::orderBy('date', 'DESC')->paginate($this->paginationCount);
 
         $temps->withPath(url('temperature/getTableData'));
 
-        $viewVariables = ['todayTemps' => $todayTemps, 'temps' => $temps];
+        $viewVariables = ['todayData' => $todayTemps, 'data' => $temps];
 
         return view('temperature.index')->with($viewVariables);
     }
 
     public function getTableData()
     {
-        $temps = Temperature::paginate($this->paginationCount);
+        $temps = Temperature::orderBy('date', 'DESC')->paginate($this->paginationCount);
 
         $tbody = '';
 
@@ -63,5 +60,6 @@ class TemperatureController extends BaseController
 
             Temperature::create($temper);
         }
+        return redirect()->back();
     }
 }

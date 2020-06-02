@@ -7,5 +7,21 @@
   "Current Password": "Ընթացիկ Ծածկանուն",
   "New Password": "Նոր ծածկանուն",
   "Confirm New Password": "Հաստատեք Նոր Ծածկանունը",
-  "Change password": "Փոփոխել ծածկանունը"
+  "Change password": "Փոփոխել ծածկանունը",
+  "Email": "Էլեկտրոնային հասցե",
+  "Login": "Մուտք",
+  "Temperature": "Ջերմաստիճան",
+  "Today": "Այսօր",
+  "History": "Պատմություն",
+  "Air Humidity": "Օդի Խոնավություն",
+  "Soil Humidity": "Հողի Խոնավություն",
+  "Light": "Լույս",
+  "Log out": "Դուրս գալ",
+  "Profile": "Պրոֆիլ",
+  "Control Panel": "Կառավարման վահանակ",
+  "Value": "Արժեք",
+  "Date": "Ամսաթիվ",
+  "ACCOUNT LOGIN": "ՄՈՒՏՔ ԱՆՁՆԱԿԱՆ ԷՋ",
+  "Time": "Ժամ",
+  "Sensor": "Տվիչ"
 }

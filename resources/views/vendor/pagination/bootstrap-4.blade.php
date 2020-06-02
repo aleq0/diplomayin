@@ -1,5 +1,5 @@
 @if ($paginator->hasPages())
-    <nav>
+    <nav class="pull-right">
         <ul class="pagination">
             {{-- Pagination Elements --}}
             @foreach ($elements as $element)
